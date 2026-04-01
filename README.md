@@ -45,20 +45,20 @@ For detailed design, refer to `architecture.md`.
 ---
 
 ## Project Structure
-scoreme-decision-system/
-│
-├── api/
-├── config/
-├── db/
-├── engine/
-├── services/
-├── tests/
-│
-├── main.py
-├── README.md
-├── architecture.md
-├── requirements.txt
-├── .gitignore
+scoreme-decision-system/<br>
+│<br>
+├── api/<br>
+├── config/<br>
+├── db/<br>
+├── engine/<br>
+├── services/<br>
+├── tests/<br>
+│<br>
+├── main.py<br>
+├── README.md<br>
+├── architecture.md<br>
+├── requirements.txt<br>
+├── .gitignore<br>
 
 
 ---
