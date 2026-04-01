@@ -29,6 +29,20 @@ The system is designed to handle real-world challenges such as failures, retries
 
 ---
 
+## Multi-Workflow Support
+
+The system supports multiple workflows via configuration.
+
+Example workflows implemented:
+- Loan Approval
+- Employee Onboarding
+- Claim Processing
+- Vendor Approval
+
+New workflows can be added by updating `workflows.json` without modifying code.
+
+---
+
 ## System Architecture
 The system is divided into modular components:
 

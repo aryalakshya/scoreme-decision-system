@@ -1,20 +1,77 @@
 {
-    "loan_approval": {
-      "rules": [
-        {
-          "id": "age_check",
-          "field": "age",
-          "operator": ">=",
-          "value": 18,
-          "on_fail": "reject"
-        },
-        {
-          "id": "credit_check",
-          "field": "credit_score",
-          "operator": ">=",
-          "value": 700,
-          "on_fail": "manual_review"
-        }
-      ]
-    }
+  "loan_approval": {
+    "rules": [
+      {
+        "id": "age_check",
+        "field": "age",
+        "operator": ">=",
+        "value": 18,
+        "on_fail": "reject"
+      },
+      {
+        "id": "credit_check",
+        "field": "credit_score",
+        "operator": ">=",
+        "value": 700,
+        "on_fail": "manual_review"
+      }
+    ]
+  },
+
+  "employee_onboarding": {
+    "rules": [
+      {
+        "id": "age_check",
+        "field": "age",
+        "operator": ">=",
+        "value": 18,
+        "on_fail": "reject"
+      },
+      {
+        "id": "document_check",
+        "field": "documents_verified",
+        "operator": "==",
+        "value": true,
+        "on_fail": "manual_review"
+      }
+    ]
+  },
+
+  "claim_processing": {
+    "rules": [
+      {
+        "id": "amount_check",
+        "field": "claim_amount",
+        "operator": "<=",
+        "value": 50000,
+        "on_fail": "manual_review"
+      },
+      {
+        "id": "policy_active_check",
+        "field": "policy_active",
+        "operator": "==",
+        "value": true,
+        "on_fail": "reject"
+      }
+    ]
+  },
+
+  "vendor_approval": {
+    "rules": [
+      {
+        "id": "rating_check",
+        "field": "vendor_rating",
+        "operator": ">=",
+        "value": 4,
+        "on_fail": "manual_review"
+      },
+      {
+        "id": "compliance_check",
+        "field": "compliance_passed",
+        "operator": "==",
+        "value": true,
+        "on_fail": "reject"
+      }
+    ]
   }
+}
