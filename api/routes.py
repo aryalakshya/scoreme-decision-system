@@ -29,7 +29,7 @@ class RequestModel(BaseModel):
 @router.post("/process")
 def process_request(request: RequestModel):
 
-    # 🔁 Idempotency check
+    # Idempotency check
     cached_response = idempotency_service.check(request.idempotency_key)
     if cached_response:
         return {
@@ -38,24 +38,24 @@ def process_request(request: RequestModel):
             "response": cached_response
         }
 
-    # 🧠 Create request
+    # Create request
     request_id = state_manager.create_request(request.data)
 
-    # 🔄 Move to processing
+    # Move to processing
     state_manager.update_status(request_id, "PROCESSING")
 
-    # ⚙️ Rule evaluation
+    # Rule evaluation
     decision, rules = rule_engine.evaluate_rules(
         request.workflow,
         request.data
     )
-    # 🚨 If rejected early, skip external call
+    # If rejected early, skip external call
     if decision == "reject":
         final_decision = "reject"
 
     else:
         try:
-            # 🔁 Retry external call
+            # Retry external call
             fraud_result = retry_service.execute_with_retry(
                 lambda: external_service.fraud_check(request.data)
             )
@@ -70,9 +70,9 @@ def process_request(request: RequestModel):
         except Exception:
             final_decision = "retry"
 
-    # 📌 Update final state
+    # Update final state
     state_manager.update_status(request_id, final_decision.upper())
-    # 🧾 Audit log
+    # Audit log
     audit_service.log_decision(
         request_id,
         decision,
@@ -86,7 +86,7 @@ def process_request(request: RequestModel):
         "rules_triggered": rules
     }
 
-    # 💾 Store for idempotency
+    # Store for idempotency
     idempotency_service.store(request.idempotency_key, response)
 
     return response
