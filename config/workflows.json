@@ -1,0 +1,20 @@
+{
+    "loan_approval": {
+      "rules": [
+        {
+          "id": "age_check",
+          "field": "age",
+          "operator": ">=",
+          "value": 18,
+          "on_fail": "reject"
+        },
+        {
+          "id": "credit_check",
+          "field": "credit_score",
+          "operator": ">=",
+          "value": 700,
+          "on_fail": "manual_review"
+        }
+      ]
+    }
+  }
